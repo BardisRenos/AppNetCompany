@@ -23,7 +23,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
 
-
     @Override
     public List<CustomerDTO> getAllCustomers() {
         return customerRepository.findAll().stream().map(CustomerMapper::toCustomerDTO).collect(Collectors.toList());
@@ -31,7 +30,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO getCustomerById(Integer id) throws CustomerNotFoundException {
-
         return customerRepository.findById(id).map(CustomerMapper::toCustomerDTO)
                 .orElseThrow(()-> new CustomerNotFoundException(
                         String.format("There is no customer with the id : %d", id)));

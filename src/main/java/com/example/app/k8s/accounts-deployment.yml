@@ -17,7 +17,7 @@ spec:
       containers:
         - name: account-service-app
           image: renosbardis/app
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8088
 ---
@@ -33,8 +33,5 @@ spec:
       protocol: "TCP"
       port: 80
       targetPort: 8088
-#      nodePort: 30011
-#    - protocol: "TCP"
-#      port: 80
-#      targetPort: 8088
+      nodePort: 30011
   type: LoadBalancer
