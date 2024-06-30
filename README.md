@@ -38,3 +38,48 @@ EXPOSE 8089
 ADD target/app-net-company.jar app-net-company.jar
 CMD ["java", "-jar", "/app-net-company.jar"]
 ```
+
+### Kubernetes
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account-service-app
+  labels:
+    app: account-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app : account-service-app
+  template:
+    metadata:
+      labels:
+        app: account-service-app
+    spec:
+      containers:
+        - name: account-service-app
+          image: renosbardis/app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8088
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  account-service-svc
+spec:
+  selector:
+    app:  account-service-app
+  ports:
+    - name: account-app
+      protocol: "TCP"
+      port: 80
+      targetPort: 8088
+      nodePort: 30011
+  type: LoadBalancer
+```
+
+
+
