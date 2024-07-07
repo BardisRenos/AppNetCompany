@@ -1,4 +1,3 @@
-# AppNetCompany
 ## Assignment for Personal Development - Net-Company
 
 <p align="center"> 
