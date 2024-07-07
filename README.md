@@ -136,3 +136,14 @@ deployment.apps/account-service-app   1/1     1            1           5m45s
 NAME                                            DESIRED   CURRENT   READY   AGE
 replicaset.apps/account-service-app-788f4d895   1         1         1       5m45s
 ```
+
+- Show the IP of the Kubernetes cluster
+
+```minikube ip```
+
+The command shows 
+
+```192.168.49.2```
+
+and the port number is 
+``` 30011 ```
