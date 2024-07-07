@@ -147,3 +147,33 @@ The command shows
 
 and the port number is 
 ``` 30011 ```
+
+### Retrieve data from the endpoint via RestApi 
+
+To retrieve data from the database via restapi call.  
+
+```http://192.168.49.2:30011/api/v1/customer/all```
+
+
+```
+[
+    {
+        "customerId": 1,
+        "name": "Renos",
+        "surname": "Bardis",
+        "balance": 100
+    },
+    {
+        "customerId": 2,
+        "name": "John",
+        "surname": "Doe",
+        "balance": 50
+    },
+    {
+        "customerId": 3,
+        "name": "Nick",
+        "surname": "Smith",
+        "balance": 45
+    }
+]
+```
