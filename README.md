@@ -61,7 +61,7 @@ ADD target/app-net-company.jar app-net-company.jar
 CMD ["java", "-jar", "/app-net-company.jar"]
 ```
 
-### Kubernetes
+### Kubernetes (file structure)
 This is a Kubernetes file (manifests) the format is .yml formatting. The file contains both the Deployment and Service type. 
 
 ```
@@ -103,6 +103,27 @@ spec:
       nodePort: 30011
   type: LoadBalancer
 ```
+
+### Kubernetes manifest fields
+All Kubernetes manifests have a few required fields:
+
+- **apiVersion** — This states the Kubernetes API that the object type you are creating belongs to. Top-level objects such as Pods currently belong to the v1 API, whereas other built-ins are scoped to more specific APIs: Deployments live in apps/v1, for example. Custom Resource Definitions (CRDs) define their API versions that let you reference the objects they provide.
+
+-  **kind** — This is the type of object that you are defining, such as Pod or Deployment.
+
+-  **metadata** — This field contains essential information about the object, including its name and namespace. This is covered in more detail below.
+
+-  **spec** — Strictly speaking, this is not a required field, but it is used by most of the object types that are built into Kubernetes. This is where you will typically define the properties of your object, such as the container image used by a Pod or the number of replicas to run in a ReplicaSet.
+
+### Manifest metadata
+The metadata section is used to define your object’s identity and attach any relevant organizational data to it. It includes the following major fields:
+
+-  **name** — This is the only required metadata field. It is the name your object will be assigned in Kubernetes.
+
+-  **namespace** — When set, this references a Kubernetes namespace that the object will be created within. The namespace must already exist in your cluster. When this field’s omitted, the default namespace is used.
+
+- **labels and annotations** — Labels and annotations let you add your own metadata to your objects. Labels are intended for information that identifies an object (such as the app or team it belongs to), while annotations store arbitrary values like the time the object was created or the system that it is being managed by.
+
 
 ### Installing minikube
 To deploy minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
