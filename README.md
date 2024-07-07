@@ -43,7 +43,7 @@ CMD ["java", "-jar", "/app-net-company.jar"]
 ```
 
 ### Kubernetes
-This is a Kubernetes file (manifests) the format is .yml formatting. 
+This is a Kubernetes file (manifests) the format is .yml formatting. The file contains both the Deployment and Service type. 
 
 ```
 apiVersion: apps/v1
@@ -93,5 +93,27 @@ This link has all instructions to [Install](https://minikube.sigs.k8s.io/docs/st
 ### How to deploy/start the minikube 
 -  In Ubuntu when you want to start Kubernetes with Docker the first command you need to apply is ```eval $(minikube docker-env)```
 
--  To start minikube cluster need to type ```minikube start```
+-  To start minikube cluster, you need to type ```minikube start```
+
+- To check if then status of the minikube status if it is running ```minikube status```
+
+The result of the previous command
+```minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+docker-env: in-use
+```
+
+- To deploy the minikube .yml file
+```kubectl apply -f accounts-deployment.yml```
+
+The response of the command 
+```
+deployment.apps/account-service-app created
+service/account-service-svc created
+```
+
 
