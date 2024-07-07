@@ -156,7 +156,7 @@ and the port number is
 
 ### Retrieve data from the endpoint via RestApi 
 
-To retrieve data from the database via restapi call. The URL endpoint is composed by giving 
+- To retrieve data from the database via restapi call. The URL endpoint is composed by giving 
 
 ```http://192.168.49.2:30011/api/v1/customer/all```
 
@@ -183,4 +183,18 @@ The result from the GET command is the JSON response.
         "balance": 45
     }
 ]
+```
+- Retrieve one record via restapi call again. The URL endpoint is composed by giving
+
+```http://192.168.49.2:30011/api/v1/customer/1```
+
+The result from the GET command is the JSON response.
+
+```
+{
+    "customerId": 1,
+    "name": "Renos",
+    "surname": "Bardis",
+    "balance": 100
+}
 ```
