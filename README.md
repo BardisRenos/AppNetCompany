@@ -2,7 +2,7 @@
 ## Assignment for Personal Development - Net-Company
 
 <p align="center"> 
-<img src="https://github.com/BardisRenos/AppNetCompany/blob/main/src/main/java/com/example/app/images/kubernetes.png" width="550" height="450" style=centerme>
+<img src="https://github.com/BardisRenos/AppNetCompany/blob/main/src/main/java/com/example/app/images/kubernetes.png" width="750" height="450" style=centerme>
 </p>
 
 ### Info
@@ -87,3 +87,4 @@ spec:
 ### Installing minikube
 To deploy minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
 
+This link has all instructions to [Install](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download#Service) minikube 
