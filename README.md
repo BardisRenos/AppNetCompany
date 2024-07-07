@@ -116,4 +116,23 @@ deployment.apps/account-service-app created
 service/account-service-svc created
 ```
 
+- To check the deployment
 
+```kubectl get all ``` 
+
+As a result the command shows 
+
+```
+NAME                                      READY   STATUS    RESTARTS   AGE
+pod/account-service-app-788f4d895-q6b4c   1/1     Running   0          5m45s
+
+NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+service/account-service-svc   LoadBalancer   10.102.92.72   <pending>     80:30011/TCP   5m45s
+service/kubernetes            ClusterIP      10.96.0.1      <none>        443/TCP        7d1h
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/account-service-app   1/1     1            1           5m45s
+
+NAME                                            DESIRED   CURRENT   READY   AGE
+replicaset.apps/account-service-app-788f4d895   1         1         1       5m45s
+```
