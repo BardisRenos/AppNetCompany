@@ -22,7 +22,7 @@ Prerequisites
 - Minikube 1.33.0
 - Ubuntu 22.04
 
-  ### Application Properties
+### Application Properties
 
 We are changing the server port from 8080 (Default) to 8088.
 
@@ -107,7 +107,7 @@ kubeconfig: Configured
 docker-env: in-use
 ```
 
-- To deploy the minikube .yml file
+- To deploy the minikube **.yml** file
 ```kubectl apply -f accounts-deployment.yml```
 
 The response of the command 
@@ -120,7 +120,7 @@ service/account-service-svc created
 
 ```kubectl get all ``` 
 
-As a result the command shows 
+As a result, the command shows 
 
 ```
 NAME                                      READY   STATUS    RESTARTS   AGE
@@ -150,10 +150,11 @@ and the port number is
 
 ### Retrieve data from the endpoint via RestApi 
 
-To retrieve data from the database via restapi call.  
+To retrieve data from the database via restapi call. The URL endpoint is composed by giving 
 
 ```http://192.168.49.2:30011/api/v1/customer/all```
 
+The result from the GET command is the JSON response.
 
 ```
 [
