@@ -3,6 +3,7 @@
 # Define namespace if necessary (leave empty if not using a specific namespace)
 NAMESPACE="default"
 
+# shellcheck disable=SC2164
 cd /home/renos/Downloads/appNetCompany/src/main/java/com/example/app/k8s
 
 # Apply the deployment

@@ -6,6 +6,7 @@ if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
     echo "Stopping the container $CONTAINER_NAME..."
     docker stop $CONTAINER_NAME
 
+    # shellcheck disable=SC2181
     if [ $? -ne 0 ]; then
         echo "Failed to stop the container $CONTAINER_NAME."
         exit 1
@@ -20,6 +21,7 @@ if [ "$(docker ps -aq -f name=$CONTAINER_NAME)" ]; then
     echo "Removing the container $CONTAINER_NAME..."
     docker rm $CONTAINER_NAME
 
+    # shellcheck disable=SC2181
     if [ $? -ne 0 ]; then
         echo "Failed to remove the container $CONTAINER_NAME."
         exit 1
