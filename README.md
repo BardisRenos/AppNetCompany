@@ -22,7 +22,12 @@ Prerequisites
 - Minikube 1.33.0
 - Ubuntu 22.04
 
-### Application Properties
+### What is Kubernetes 
+Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.
+
+### Setting the Application
+
+- Setting the Application properties
 
 We are changing the server port from 8080 (Default) to 8088.
 
@@ -33,6 +38,8 @@ server:
 The whole application.yml file consists of the configuration of the application regarding the memory database H2 and the hibernate configuration. 
 
 ### Docker
+
+-  Creating the Dockerfile for the application.
 
 ```
 FROM openjdk:17-alpine
