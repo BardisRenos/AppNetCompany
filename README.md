@@ -1,6 +1,9 @@
 # AppNetCompany
-# Assignment for Personal Development - Net-Company
+## Assignment for Personal Development - Net-Company
 
+<p align="center"> 
+<img src="https://github.com/BardisRenos/AppNetCompany/blob/main/src/main/java/com/example/app/images/kubernetes.png" width="550" height="450" style=centerme>
+</p>
 
 ### Info
 
@@ -27,7 +30,7 @@ We are changing the server port from 8080 (Default) to 8088.
 server:
   port: '8088'
 ```
-The whole application.yml file consists configuration of the application regarding the memory database H2 and the hibernate configuration. 
+The whole application.yml file consists of the configuration of the application regarding the memory database H2 and the hibernate configuration. 
 
 ### Docker
 
@@ -52,7 +55,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app : account-service-app
+      app: account-service-app
   template:
     metadata:
       labels:
@@ -81,5 +84,6 @@ spec:
   type: LoadBalancer
 ```
 
-
+### Installing minikube
+To deploy minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
 
