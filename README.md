@@ -146,21 +146,23 @@ apiserver: Running
 kubeconfig: Configured
 docker-env: in-use
 ```
+### Deploying Minikube
 
-- To deploy the minikube **.yml** file
+- Apply the Kubernetes manifest file:
 ```kubectl apply -f accounts-deployment.yml```
 
-The response of the command 
+Expected output: 
+
 ```
 deployment.apps/account-service-app created
 service/account-service-svc created
 ```
 
-- To check the deployment
+- Check the deployment:
 
 ```kubectl get all ``` 
 
-As a result, the command shows 
+Expected output:
 
 ```
 NAME                                      READY   STATUS    RESTARTS   AGE
@@ -188,13 +190,13 @@ The command shows
 and the port number is 
 ``` 30011 ```
 
-### Retrieve data from the endpoint via RestApi 
+### Retrieving Data from the API
 
-- To retrieve data from the database via restapi call. The URL endpoint is composed by giving 
+- Get all customer data:
 
-```http://192.168.49.2:30011/api/v1/customer/all```
+```curl http://192.168.49.2:30011/api/v1/customer/all```
 
-The result from the GET command is the JSON response.
+Expected output:
 
 ```
 [
@@ -218,9 +220,9 @@ The result from the GET command is the JSON response.
     }
 ]
 ```
-- Retrieve one record via restapi call again. The URL endpoint is composed by giving
+- Get data for a specific customer:
 
-```http://192.168.49.2:30011/api/v1/customer/1```
+```curl http://192.168.49.2:30011/api/v1/customer/1```
 
 The result from the GET command is the JSON response.
 
