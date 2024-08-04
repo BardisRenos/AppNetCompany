@@ -6,7 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 
 /**
- * The entity class of the user database table
+ * The entity class for the customer database table.
  */
 @Entity
 @Getter
@@ -16,23 +16,39 @@ import java.io.Serializable;
 @Table(name = "customer")
 public class Customer implements Serializable {
 
+    /**
+     * The unique identifier for a customer.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", unique = true, nullable = false, updatable = false)
     private Integer customerID;
+
+    /**
+     * The name of the customer.
+     */
     @Column(name = "name")
     private String name;
+
+    /**
+     * The surname of the customer.
+     */
     @Column(name = "surname")
     private String surname;
+
+    /**
+     * The balance of the customer.
+     */
     @Column(name = "balance")
     private Integer balance;
 
     /**
-     * The constructor of the Customer
-     * @param customerID The customer id
-     * @param name The name of the customer
-     * @param surname The surname of the customer
-     * @param balance The balance of the customer
+     * Constructs a new Customer.
+     *
+     * @param customerID the unique identifier of the customer.
+     * @param name the name of the customer.
+     * @param surname the surname of the customer.
+     * @param balance the balance of the customer.
      */
     public Customer(Integer customerID, String name, String surname, Integer balance) {
         this.customerID = customerID;

@@ -10,9 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Configuration class for initializing the database with sample data.
+ */
 @Configuration
 public class data {
 
+    /**
+     * Initializes the database with sample customer data.
+     *
+     * @param customerRepository the repository for managing customer data.
+     * @return a CommandLineRunner that populates the database with sample customers.
+     */
     @Bean
     public CommandLineRunner initDB(CustomerRepository customerRepository) {
 

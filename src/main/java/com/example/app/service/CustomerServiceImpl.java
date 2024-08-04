@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 
 /**
- * The Service layer of User
+ * The Service layer for managing customers.
  */
 @Slf4j
 @Service
@@ -23,11 +23,23 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
 
+    /**
+     * Retrieves all customers from the repository and converts them to DTOs.
+     *
+     * @return a list of all customer DTOs.
+     */
     @Override
     public List<CustomerDTO> getAllCustomers() {
         return customerRepository.findAll().stream().map(CustomerMapper::toCustomerDTO).collect(Collectors.toList());
     }
 
+    /**
+     * Retrieves a customer by their ID and converts it to a DTO.
+     *
+     * @param id the ID of the customer to retrieve.
+     * @return the customer DTO with the given ID.
+     * @throws CustomerNotFoundException if no customer is found with the given ID.
+     */
     @Override
     public CustomerDTO getCustomerById(Integer id) throws CustomerNotFoundException {
         return customerRepository.findById(id).map(CustomerMapper::toCustomerDTO)

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller for managing customers.
+ */
 @RestController
 @RequestMapping("/api/v1/customer/")
 @RequiredArgsConstructor
@@ -16,12 +19,24 @@ public class CustomerController {
 
     private final CustomerServiceImpl userService;
 
+    /**
+     * Retrieves all customers.
+     *
+     * @return a list of all customers.
+     */
     @GetMapping("all")
     @ResponseStatus(HttpStatus.OK)
     public List<CustomerDTO> getAllCustomers() {
         return userService.getAllCustomers();
     }
 
+    /**
+     * Retrieves a customer by their ID.
+     *
+     * @param id the ID of the customer to retrieve.
+     * @return the customer with the given ID.
+     * @throws CustomerNotFoundException if no customer is found with the given ID.
+     */
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public CustomerDTO insertCustomer(@PathVariable int id) throws CustomerNotFoundException {
