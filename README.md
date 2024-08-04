@@ -4,15 +4,15 @@
 <img src="https://github.com/BardisRenos/AppNetCompany/blob/main/src/main/java/com/example/app/images/kubernetes.png" width="750" height="450" style=centerme>
 </p>
 
-### Info
+### Project Overview
 
 Create an application in Spring Boot with Kubernetes and Docker.
 
-Requirements:
+### Requirements:
 - Develop an application with Kubernetes
-- Emphasizing to Kubernetes
+- Emphasize Kubernetes functionality
 
-Prerequisites 
+#### Prerequisites 
 - Java v17
 - Spring Boot v3.2.7
 - Maven Project 
@@ -21,10 +21,10 @@ Prerequisites
 - Minikube 1.33.0
 - Ubuntu 22.04
 
-### What is Kubernetes 
+### What is Kubernetes?
 Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.
 
-### Kubernetes Components 
+#### Kubernetes Components 
 When you deploy Kubernetes, you get a cluster.
 
 A Kubernetes cluster consists of a set of worker machines, called nodes, that run containerized applications. Every cluster has at least one worker node.
@@ -37,21 +37,21 @@ The worker node(s) host the Pods that are the components of the application work
 </p>
 
 
-### Setting the Application
+### Setting Up the Application
 
-- Setting the Application properties
+#### Application properties
 
-We are changing the server port from 8080 (Default) to 8088.
+Change the server port from 8080 (default) to 8088:
 
 ```
 server:
   port: '8088'
 ```
-The whole application.yml file consists of the configuration of the application regarding the memory database H2 and the hibernate configuration. 
+The `application.yml` file includes configuration for the H2 in-memory database and Hibernate settings.
 
-### Docker
+### Docker Setup
 
--  Creating the Dockerfile for the application.
+Creating the Dockerfile.
 
 ```
 FROM openjdk:17-alpine
@@ -61,8 +61,8 @@ ADD target/app-net-company.jar app-net-company.jar
 CMD ["java", "-jar", "/app-net-company.jar"]
 ```
 
-### Kubernetes
-This is a Kubernetes file (manifests) the format is .yml formatting. The file contains both the Deployment and Service type. 
+### Kubernetes Setup
+This YAML file contains both the Deployment and Service configurations:
 
 ```
 apiVersion: apps/v1
@@ -104,15 +104,36 @@ spec:
   type: LoadBalancer
 ```
 
-### Installing minikube
+### Kubernetes Manifest Fields
+All Kubernetes manifests have a few required fields:
+
+- **apiVersion** — This states the Kubernetes API that the object type you are creating belongs to. Top-level objects such as Pods belong to the v1 API, whereas other built-ins are scoped to more specific APIs: Deployments live in apps/v1, for example. Custom Resource Definitions (CRDs) define their API versions that let you reference the objects they provide.
+
+-  **kind** — This is the type of object you define, such as Pod or Deployment.
+
+-  **metadata** — This field contains essential information about the object, including its name and namespace. This is covered in more detail below.
+
+-  **spec** — Strictly speaking, this is not a required field, but it is used by most of the object types that are built into Kubernetes. This is where you will typically define the properties of your object, such as the container image used by a Pod or the number of replicas to run in a ReplicaSet.
+
+### Metadata Fields
+The metadata section is used to define your object’s identity and attach any relevant organizational data to it. It includes the following major fields:
+
+-  **name** — This is the only required metadata field. It is the name your object will be assigned in Kubernetes.
+
+-  **namespace** — When set, this references a Kubernetes namespace that the object will be created within. The namespace must already exist in your cluster. When this field’s omitted, the default namespace is used.
+
+- **labels and annotations** — Labels and annotations let you add your metadata to your objects. Labels are intended for information that identifies an object (such as the app or team it belongs to), while annotations store arbitrary values like the time the object was created or the system that it is being managed by.
+
+
+### Installing Minikube
 To deploy minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
 
-This link has all instructions to [Install](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download#Service) minikube 
+Minikube is a local Kubernetes deployment tool. Follow the [installation instructions](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download#Service) to set it up. 
 
-### How to deploy/start the minikube 
--  In Ubuntu when you want to start Kubernetes with Docker the first command you need to apply is ```eval $(minikube docker-env)```
+### Starting Minikube
+- In Ubuntu when you want to start Kubernetes with Docker the first command you need to apply is ```eval $(minikube docker-env)```
 
--  To start minikube cluster, you need to type ```minikube start```
+- To start minikube cluster, you need to type ```minikube start```
 
 - To check if then status of the minikube status if it is running ```minikube status```
 
@@ -125,21 +146,23 @@ apiserver: Running
 kubeconfig: Configured
 docker-env: in-use
 ```
+### Deploying Minikube
 
-- To deploy the minikube **.yml** file
+- Apply the Kubernetes manifest file:
 ```kubectl apply -f accounts-deployment.yml```
 
-The response of the command 
+Expected output: 
+
 ```
 deployment.apps/account-service-app created
 service/account-service-svc created
 ```
 
-- To check the deployment
+- Check the deployment:
 
 ```kubectl get all ``` 
 
-As a result, the command shows 
+Expected output:
 
 ```
 NAME                                      READY   STATUS    RESTARTS   AGE
@@ -167,13 +190,13 @@ The command shows
 and the port number is 
 ``` 30011 ```
 
-### Retrieve data from the endpoint via RestApi 
+### Retrieving Data from the API
 
-- To retrieve data from the database via restapi call. The URL endpoint is composed by giving 
+- Get all customer data:
 
-```http://192.168.49.2:30011/api/v1/customer/all```
+```curl http://192.168.49.2:30011/api/v1/customer/all```
 
-The result from the GET command is the JSON response.
+Expected output:
 
 ```
 [
@@ -197,9 +220,9 @@ The result from the GET command is the JSON response.
     }
 ]
 ```
-- Retrieve one record via restapi call again. The URL endpoint is composed by giving
+- Get data for a specific customer:
 
-```http://192.168.49.2:30011/api/v1/customer/1```
+```curl http://192.168.49.2:30011/api/v1/customer/1```
 
 The result from the GET command is the JSON response.
 
