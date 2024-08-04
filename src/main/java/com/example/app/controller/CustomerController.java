@@ -2,7 +2,9 @@ package com.example.app.controller;
 
 import com.example.app.dto.CustomerDTO;
 import com.example.app.exception.CustomerNotFoundException;
+import com.example.app.resources.Customer;
 import com.example.app.service.CustomerServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +40,21 @@ public class CustomerController {
      * @throws CustomerNotFoundException if no customer is found with the given ID.
      */
     @GetMapping("{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public CustomerDTO insertCustomer(@PathVariable int id) throws CustomerNotFoundException {
+    @ResponseStatus(HttpStatus.OK)
+    public CustomerDTO getCustomer(@PathVariable int id) throws CustomerNotFoundException {
         return userService.getCustomerById(id);
     }
+
+    /**
+     * Inserts a new customer.
+     *
+     * @param customer the customer entity to insert.
+     * @return the inserted customer as a DTO.
+     */
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public CustomerDTO insertCustomer(@Valid @RequestBody Customer customer) {
+        return userService.insertNewCustomer(customer);
+    }
+
 }

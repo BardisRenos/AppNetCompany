@@ -47,5 +47,15 @@ public class CustomerServiceImpl implements CustomerService {
                         String.format("There is no customer with the id : %d", id)));
     }
 
+    /**
+     * Inserts a new customer into the repository and converts the saved entity to a DTO.
+     *
+     * @param customer the customer entity to be saved.
+     * @return the DTO representation of the saved customer.
+     */
+    @Override
+    public CustomerDTO insertNewCustomer(Customer customer) {
+        return CustomerMapper.toCustomerDTO(customerRepository.save(customer));
+    }
 }
 

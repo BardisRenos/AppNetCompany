@@ -3,6 +3,7 @@ package com.example.app.service;
 
 import com.example.app.dto.CustomerDTO;
 import com.example.app.exception.CustomerNotFoundException;
+import com.example.app.resources.Customer;
 
 import java.util.List;
 
@@ -26,4 +27,12 @@ public interface CustomerService {
      * @throws CustomerNotFoundException if no customer is found with the given ID.
      */
     CustomerDTO getCustomerById(Integer id) throws CustomerNotFoundException;
+
+    /**
+     * Inserts a new customer into the repository and converts the saved entity to a DTO.
+     *
+     * @param customer the customer entity to be saved.
+     * @return the DTO representation of the saved customer.
+     */
+    CustomerDTO insertNewCustomer(Customer customer);
 }
