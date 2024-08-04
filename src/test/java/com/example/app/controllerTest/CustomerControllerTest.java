@@ -97,7 +97,7 @@ public class CustomerControllerTest {
         when(userService.insertNewCustomer(any(Customer.class))).thenReturn(customerDTO);
 
         // Act & Assert
-        mockMvc.perform(post("/api/v1/customer/")
+        mockMvc.perform(post("/api/v1/customer/new")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(customer)))
                 .andExpect(status().isCreated())

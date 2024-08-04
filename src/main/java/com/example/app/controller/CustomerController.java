@@ -51,7 +51,7 @@ public class CustomerController {
      * @param customer the customer entity to insert.
      * @return the inserted customer as a DTO.
      */
-    @PostMapping()
+    @PostMapping("new")
     @ResponseStatus(HttpStatus.CREATED)
     public CustomerDTO insertCustomer(@Valid @RequestBody Customer customer) {
         return userService.insertNewCustomer(customer);
